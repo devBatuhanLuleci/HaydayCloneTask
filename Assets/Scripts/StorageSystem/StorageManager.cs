@@ -28,8 +28,8 @@ public class StorageManager : MonoBehaviour
     private Dictionary<CollectibleItem, int> siloItems;
 
     //storage buildings
-    private StorageBuilding Barn;
-    private StorageBuilding Silo;
+    private SampleBuilding Barn;
+    private SampleBuilding Silo;
 
     private void Awake()
     {
@@ -127,7 +127,7 @@ public class StorageManager : MonoBehaviour
         //instantiate the silo object
         GameObject siloObject = BuildingSystem.current.InitializeWithObject(siloPrefab, new Vector3(7.25f, -0.25f));
         //get the storage building component and save it
-        Silo = siloObject.GetComponent<StorageBuilding>();
+        Silo = siloObject.GetComponent<SampleBuilding>();
         //place the building onto the map
         Silo.Load();
         //initialize with items and a name
@@ -136,7 +136,7 @@ public class StorageManager : MonoBehaviour
         //instantiate the barn object
         GameObject barnObject = BuildingSystem.current.InitializeWithObject(barnPrefab, new Vector3(6f, -0.25f));
         //get the storage building component and save it
-        Barn = barnObject.GetComponent<StorageBuilding>();
+        Barn = barnObject.GetComponent<SampleBuilding>();
         //place the building onto the map
         Barn.Load();
         //initialize with items and a name
