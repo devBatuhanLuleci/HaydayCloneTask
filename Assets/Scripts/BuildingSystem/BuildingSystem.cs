@@ -100,16 +100,21 @@ public class BuildingSystem : MonoBehaviour
     #region Building Placement
 
     
-    public void InitializeWithObject(GameObject building, Vector3 pos)
+    public GameObject InitializeWithObject(GameObject building, Vector3 pos)
     {
+        //calculate the position to place the object
         pos.z = 0;
         pos.y -= building.GetComponent<SpriteRenderer>().bounds.size.y / 2f;
         Vector3Int cellPos = gridLayout.WorldToCell(pos);
         Vector3 position = gridLayout.CellToLocalInterpolated(cellPos);
 
+        //instantiate an object
         GameObject obj = Instantiate(building, position, Quaternion.identity);
         PlaceableObject temp = obj.transform.GetComponent<PlaceableObject>();
         temp.gameObject.AddComponent<ObjectDrag>();
+        
+        //return object instantiated
+        return obj;
     }
 
     /*
@@ -143,5 +148,21 @@ public class BuildingSystem : MonoBehaviour
         SetTilesBlock(area, takenTile, MainTilemap);
     }
 
+    #endregion
+
+    #region MapManagement
+
+    public void LockTerritory(BoundsInt area)
+    {
+        //fill the area with white tile to indicate the area is unavailable
+        SetTilesBlock(area, takenTile, MainTilemap);
+    }
+
+    public void UnlockTerritory(BoundsInt area)
+    {
+        //clear the area to make it available
+        ClearArea(area, MainTilemap);
+    }
+    
     #endregion
 }

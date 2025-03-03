@@ -15,5 +15,6 @@ public class GameManager : MonoBehaviour
         
         //initialize
         ShopItemDrag.canvas = canvas.GetComponent<Canvas>();
+        UIDrag.canvas = canvas.GetComponent<Canvas>();
     }
 }

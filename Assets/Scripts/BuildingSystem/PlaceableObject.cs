@@ -14,6 +14,18 @@ public class PlaceableObject : MonoBehaviour
     //area under the house - stores position and building size
     public BoundsInt area;
 
+    private void Awake()
+    {
+        PanZoom.current.FollowObject(transform);
+    }
+
+    public void Load()
+    {
+        PanZoom.current.UnfollowObject();
+        Destroy(GetComponent<ObjectDrag>());
+        Place();
+    }
+    
     /*
      * Check if the building can be placed at its current position
      */
@@ -31,7 +43,7 @@ public class PlaceableObject : MonoBehaviour
     /*
      * Make the building placed
      */
-    public void Place()
+    public virtual void Place()
     {
         //create an area under the building
         Vector3Int positionInt = BuildingSystem.current.gridLayout.LocalToCell(transform.position);
@@ -49,6 +61,8 @@ public class PlaceableObject : MonoBehaviour
 
     public void CheckPlacement()
     {
+        PanZoom.current.UnfollowObject();
+        
         //object is new an haven't been placed before
         if (!Placed)
         {
@@ -78,52 +92,55 @@ public class PlaceableObject : MonoBehaviour
             
             Place();
         }
-        
     }
 
     //time elapsed since the touch begun
     private float time = 0f;
     private bool touching;
+    private bool moving;
 
     private void Update()
     {
-        //detected long touch on a placed object
-        if (!touching && Placed)
+        if(touching && Input.GetMouseButton(0))
         {
-            //touch begun - start time
-            if (Input.GetMouseButtonDown(0))
-            {
-                time = 0;
-            }
-            //holding touch
-            else if(Input.GetMouseButton(0))
-            {
-                //increase time elapsed
-                time += Time.deltaTime;
+            //increase time elapsed
+            time += Time.deltaTime;
 
-                //time limit exceeded
-                if (time > 3f)
-                {
-                    touching = true;
-                    //add component to drag
-                    gameObject.AddComponent<ObjectDrag>();
+            //time limit exceeded
+            if (time > 3f)
+            {
+                touching = false;
+                moving = true;
+                //add component to drag
+                gameObject.AddComponent<ObjectDrag>();
 
-                    //prepare area
-                    Vector3Int positionInt = BuildingSystem.current.gridLayout.WorldToCell(transform.position);
-                    BoundsInt areaTemp = area;
-                    areaTemp.position = positionInt;
+                //prepare area
+                Vector3Int positionInt = BuildingSystem.current.gridLayout.WorldToCell(transform.position);
+                BoundsInt areaTemp = area;
+                areaTemp.position = positionInt;
                     
-                    //clear area on which the object was standing on
-                    BuildingSystem.current.ClearArea(areaTemp, BuildingSystem.current.MainTilemap);
-                }
+                //clear area on which the object was standing on
+                BuildingSystem.current.ClearArea(areaTemp, BuildingSystem.current.MainTilemap);
             }
-            
         }
+    }
 
-        //touch released
-        if (touching && Input.GetMouseButtonUp(0))
+    private void OnMouseDown()
+    {
+        time = 0;
+        touching = true;
+    }
+
+    protected virtual void OnClick() { }
+
+    private void OnMouseUpAsButton()
+    {
+        if (moving)
         {
-            touching = false;
+            moving = false;
+            return;
         }
+        
+        OnClick();
     }
 }
