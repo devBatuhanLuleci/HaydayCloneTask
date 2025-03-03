@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LevelSystem : MonoBehaviour
 {
     private int XPNow;
-    private int Level;
+    public static int Level { get; private set; }
     private int xpToNext;
 
     [SerializeField] private GameObject levelPanel;

@@ -2,25 +2,18 @@
 
 public class GameManager : MonoBehaviour
 {
+    //singletone pattern
     public static GameManager current;
 
+    //save the canvas
     public GameObject canvas;
 
     private void Awake()
     {
+        //initialize fields
         current = this;
-    }
-
-    public void GetXP(int amount)
-    {
-        XPAddedGameEvent info = new XPAddedGameEvent(amount);
-        EventManager.Instance.QueueEvent(info);
-    }
-
-    public void GetCoins(int amount)
-    {
-        CurrencyChangeGameEvent info = new CurrencyChangeGameEvent(amount, CurrencyType.Coins);
         
-        EventManager.Instance.QueueEvent(info);
+        //initialize
+        ShopItemDrag.canvas = canvas.GetComponent<Canvas>();
     }
 }
