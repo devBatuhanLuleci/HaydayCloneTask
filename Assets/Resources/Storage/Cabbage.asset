@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52fa944e8efb1344db000d0098498e84, type: 3}
-  m_Name: Crop
+  m_Name: Cabbage
   m_EditorClassIdentifier: 
-  Name: Corn
+  Name: Cabbage
   Description: 
-  Icon: {fileID: 21300000, guid: e863c619ded53064b9313c4ad2cdd9ff, type: 3}
+  Icon: {fileID: 3244378606169850246, guid: 50a9b0e19cff92b4bbbb54355860bc12, type: 3}
   Level: 0
   ItemTypes: []
   ItemsAmounts: 
@@ -24,4 +24,4 @@ MonoBehaviour:
     Minutes: 2
     Seconds: 0
   growingCrop: {fileID: 21300000, guid: ae29cbadc53ca644982c3471c8407e93, type: 3}
-  readyCrop: {fileID: 21300000, guid: f62df02e4d43fcd44a9bf1a3f3cc46db, type: 3}
+  readyCrop: {fileID: 21300000, guid: f598ce3479b31234799efc5760a5ea3b, type: 3}

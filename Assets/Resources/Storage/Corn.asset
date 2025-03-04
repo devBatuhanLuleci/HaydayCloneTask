@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e28f4e48c8ad04fbc2d63b38c20d72, type: 3}
-  m_Name: Carrot
+  m_Script: {fileID: 11500000, guid: 52fa944e8efb1344db000d0098498e84, type: 3}
+  m_Name: Corn
   m_EditorClassIdentifier: 
-  Name: Carrot
+  Name: Corn
   Description: 
   Icon: {fileID: 21300000, guid: e863c619ded53064b9313c4ad2cdd9ff, type: 3}
   Level: 0
@@ -23,5 +23,5 @@ MonoBehaviour:
     Hours: 0
     Minutes: 2
     Seconds: 0
-  growingCarrot: {fileID: 21300000, guid: ae29cbadc53ca644982c3471c8407e93, type: 3}
-  readyCarrot: {fileID: 21300000, guid: f62df02e4d43fcd44a9bf1a3f3cc46db, type: 3}
+  growingCrop: {fileID: 21300000, guid: ae29cbadc53ca644982c3471c8407e93, type: 3}
+  readyCrop: {fileID: 21300000, guid: f62df02e4d43fcd44a9bf1a3f3cc46db, type: 3}
