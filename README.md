@@ -68,9 +68,6 @@ This project is a **Farm Simulation Test Case** developed using **Unity** and **
 ## APK Link
 
 *Add link here*
-## Author
-
-Developed by **Batuhan** as part of a technical assessment for **Wibesoft**.
 
 ---
 
