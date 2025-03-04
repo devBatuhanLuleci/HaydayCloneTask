@@ -22,8 +22,9 @@ public class Field : PlaceableObject, ISource
     //empty field sprite (set after the crop is collected)
     private Sprite emptyFieldSprite;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         //get the somponent
         sr = GetComponent<SpriteRenderer>();
         //save the sprite

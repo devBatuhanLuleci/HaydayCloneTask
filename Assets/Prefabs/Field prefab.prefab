@@ -288,4 +288,4 @@ MonoBehaviour:
   area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 5, y: 5, z: 1}
-  arrowPrefab: {fileID: 5953803833549818936, guid: bd83fafc3f9b164448f36968d38a320f, type: 3}
+  arrowPrefab: {fileID: 7519754993047919814, guid: bd83fafc3f9b164448f36968d38a320f, type: 3}

@@ -26,7 +26,7 @@ public class PlaceableObject : MonoBehaviour
     private Arrow currentArrow; // Reference to the instantiated arrow
     private bool arrowSpawned = false; // Flag to track if the arrow has already been spawned
 
-    private void Awake()
+    protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         PanZoom.current.FollowObject(transform);
@@ -81,6 +81,7 @@ public class PlaceableObject : MonoBehaviour
     {
         PanZoom.current.UnfollowObject();
 
+        moving = false;
         //object is new an haven't been placed before
         if (!Placed)
         {
@@ -125,7 +126,6 @@ public class PlaceableObject : MonoBehaviour
     }
     private void StopAnimation()
     {
-        Debug.Log(colorTween == null);
         colorTween?.Kill(); // Stop the animation
         spriteRenderer.color = new Color(1, 1, 1, 1); // Reset color to white with full opacity (alpha = 1)
     }
@@ -231,6 +231,10 @@ public class PlaceableObject : MonoBehaviour
             {
                 currentArrow.StopAnimation(); // Stop animation if user releases input
             }
+        }
+        if (touching)
+        {
+            touching = false;   
         }
         if (moving)
         {
