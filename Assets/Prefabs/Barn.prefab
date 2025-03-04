@@ -493,8 +493,4 @@ MonoBehaviour:
   area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 6, y: 6, z: 1}
-  windowPrefab: {fileID: 4343018714136492031, guid: bd215afe795ca5c49b3ece8763de2371, type: 3}
-  itemsToIncrease:
-  - {fileID: 11400000, guid: 79a8e0a290696224892c4ab32bc229da, type: 2}
-  - {fileID: 11400000, guid: 24a8e4c0cbcd1d149a6e7e75781c4ad4, type: 2}
-  - {fileID: 11400000, guid: 86f21880bec0bfb4c92250473d94688d, type: 2}
+  arrowPrefab: {fileID: 7519754993047919814, guid: bd83fafc3f9b164448f36968d38a320f, type: 3}

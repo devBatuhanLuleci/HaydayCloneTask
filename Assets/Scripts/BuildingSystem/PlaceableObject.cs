@@ -22,6 +22,10 @@ public class PlaceableObject : MonoBehaviour
     private bool moving;
     private SpriteRenderer spriteRenderer;
     private Tween colorTween; // DoTween Tween Reference
+    public Arrow arrowPrefab; // Reference to your Arrow UI element prefab
+    private Arrow currentArrow; // Reference to the instantiated arrow
+    private bool arrowSpawned = false; // Flag to track if the arrow has already been spawned
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -151,7 +155,21 @@ public class PlaceableObject : MonoBehaviour
         if (touching && Input.GetMouseButton(0))
         {
             time += Time.deltaTime;
-            if (time > 3f)
+
+            if (time > 1f && !arrowSpawned) // Only spawn the arrow once
+            {
+                SpawnArrow();
+                arrowSpawned = true;
+            }
+
+            // Update the arrow's fill amount based on the touch duration
+            if (currentArrow != null)
+            {
+                // Lerp the fill amount based on the time held
+                currentArrow.UpdateFillAmount(Mathf.Min(time / 2f, 1f), 2f); // Full progress at 2 seconds
+            }
+            // If the touch is held for 3 seconds, stop the animation and start drag
+            if (time > 2f)
             {
                 touching = false;
                 moving = true;
@@ -166,10 +184,28 @@ public class PlaceableObject : MonoBehaviour
                 // Start the animation as soon as the drag starts
                 lastCanBePlacedState = CanBePlaced();
                 AnimateColor(lastCanBePlacedState ? Color.white : Color.white, lastCanBePlacedState ? Color.white : Color.red);
+               
+                if (arrowSpawned)
+                {
+                    arrowSpawned = false;
+                    if (currentArrow != null)
+                    {
+                        currentArrow.StopAnimation(); // Stop animation if user releases input
+                    }
+                }
             }
+          
         }
     }
-
+    public void SpawnArrow()
+    {
+        if (arrowPrefab != null && currentArrow == null)
+        {
+            currentArrow = Instantiate(arrowPrefab, new Vector3(transform.position.x, transform.position.y + arrowPrefab.transform.position.y, transform.position.z), Quaternion.identity, transform) as Arrow;
+            currentArrow.gameObject.SetActive(true);
+            currentArrow.UpdateFillAmount(0f, 2f); // Initialize the fill amount to 0 and lerp over 2 seconds
+        }
+    }
 
     private void OnDestroy()
     {
@@ -179,16 +215,27 @@ public class PlaceableObject : MonoBehaviour
     {
         time = 0;
         touching = true;
+
+        // Instantiate and activate the arrow at the start of the touch
+     
     }
 
     protected virtual void OnClick() { }
 
-    private void OnMouseUpAsButton()
+    public void OnMouseUpAsButton()
     {
-        if (moving )
+        if (arrowSpawned) 
         {
+            arrowSpawned = false;
+            if (currentArrow != null)
+            {
+                currentArrow.StopAnimation(); // Stop animation if user releases input
+            }
+        }
+        if (moving)
+        {
+         
             moving = false;
-            //StopAnimation(); // Stop animation and reset color
             return;
         }
 
