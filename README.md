@@ -59,6 +59,9 @@ This project is a **Farm Simulation Test Case** developed using **Unity** and **
 ## Screenshots
 
 ![image alt](https://github.com/devBatuhanLuleci/HaydayCloneTask/blob/a31b3b63f67274571fd617c97b4cd267728c3839/Image%20Sequence_010_0000.png)
+
+
+
 ![image alt](https://github.com/devBatuhanLuleci/HaydayCloneTask/blob/c521a79abec80ff90958b15a26d41eea769940ca/Image%20Sequence_013_0000.png)
 
 
