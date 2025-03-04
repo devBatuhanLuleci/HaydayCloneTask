@@ -21,7 +21,17 @@ public class Producible : CollectibleItem
         public int Minutes;
         public int Seconds;
     }
+    public void Initialize()
+    {
+        ItemsNeeded = new Dictionary<CollectibleItem, int>();
 
+        for (int i = 0; i < ItemTypes.Count && i < ItemsAmounts.Count; i++)
+        {
+            ItemsNeeded.Add(ItemTypes[i], ItemsAmounts[i]);
+        }
+
+        productionTime = new TimeSpan(TimeStruct.Days, TimeStruct.Hours, TimeStruct.Minutes, TimeStruct.Seconds);
+    }
     protected void OnValidate()
     {
         ItemsNeeded = new Dictionary<CollectibleItem, int>();

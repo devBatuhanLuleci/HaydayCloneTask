@@ -10,9 +10,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        #if !UNITY_EDITOR
+                Application.targetFrameRate = 60;
+                QualitySettings.vSyncCount = 0;
+        #endif
         //initialize fields
         current = this;
-        
+
         //initialize
         ShopItemDrag.canvas = canvas.GetComponent<Canvas>();
         UIDrag.canvas = canvas.GetComponent<Canvas>();

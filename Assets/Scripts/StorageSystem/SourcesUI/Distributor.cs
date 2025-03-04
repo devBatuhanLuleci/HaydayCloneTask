@@ -17,11 +17,11 @@ public class Distributor : UIDrag
     {
         //initialize the UIDrag base
         base.Initialize(src);
+        item.Initialize();
 
         //initialize fields
         itemToProduce = item;
         itemsNeeded = item.ItemsNeeded;
-
         //get the UI components
         transform.Find("Icon").GetComponent<Image>().sprite = item.Icon;
         Transform amountTr = transform.Find("Amount");
