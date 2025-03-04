@@ -12,7 +12,7 @@ public class PlaceableObject : MonoBehaviour
     //position on which an object was placed
     //(save it if the new position is not available)
     private Vector3 origin;
-    
+
     //area under the house - stores position and building size
     public BoundsInt area;
 
@@ -35,7 +35,7 @@ public class PlaceableObject : MonoBehaviour
         Destroy(GetComponent<ObjectDrag>());
         Place();
     }
-    
+
     /*
      * Check if the building can be placed at its current position
      */
@@ -47,12 +47,12 @@ public class PlaceableObject : MonoBehaviour
         areaTemp.position = positionInt;
 
         bool canPlacable = BuildingSystem.current.CanTakeArea(areaTemp);
-    
+
 
         //call the GridBuildingSystem to check the area
         return canPlacable;
     }
-    
+
     /*
      * Make the building placed
      */
@@ -67,8 +67,8 @@ public class PlaceableObject : MonoBehaviour
         Placed = true;
         //save position
         origin = transform.position;
-        
 
+        StopAnimation();
         //call the system to 
         BuildingSystem.current.TakeArea(areaTemp);
     }
@@ -76,7 +76,7 @@ public class PlaceableObject : MonoBehaviour
     public void CheckPlacement()
     {
         PanZoom.current.UnfollowObject();
-        
+
         //object is new an haven't been placed before
         if (!Placed)
         {
@@ -91,7 +91,7 @@ public class PlaceableObject : MonoBehaviour
                 //destroy this object (because it is new)
                 Destroy(transform.gameObject);
             }
-        
+
             //open the shop afterwards
             ShopManager.current.ShopButton_Click();
         }
@@ -105,7 +105,7 @@ public class PlaceableObject : MonoBehaviour
                 transform.position = origin;
                 //AnimateColor(Color.white, Color.red);
             }
-            
+
             Place();
         }
     }
@@ -118,14 +118,14 @@ public class PlaceableObject : MonoBehaviour
 
     private void StopAnimation()
     {
-        Debug.Log(colorTween==null);
+        Debug.Log(colorTween == null);
         colorTween?.Kill(); // Stop the animation
         spriteRenderer.color = Color.white; // Reset color to default
     }
 
     private void Update()
     {
-        if (moving)
+        if (moving || !Placed)
         {
             bool canPlace = CanBePlaced();
 
@@ -182,10 +182,10 @@ public class PlaceableObject : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        if (moving)
+        if (moving )
         {
             moving = false;
-            StopAnimation(); // Stop animation and reset color
+            //StopAnimation(); // Stop animation and reset color
             return;
         }
 
