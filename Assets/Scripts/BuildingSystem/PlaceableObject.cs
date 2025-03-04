@@ -111,16 +111,19 @@ public class PlaceableObject : MonoBehaviour
     }
     private void AnimateColor(Color from, Color to)
     {
+        // Set the alpha from 1 (255) to approximately 0.588 (150) for the effect
+        from.a = 1f; // fully opaque
+        to.a = 0.588f; // semi-transparent
+
         colorTween?.Kill(); // Kill any active tween before starting a new one
         spriteRenderer.color = from;
         colorTween = spriteRenderer.DOColor(to, 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
-
     private void StopAnimation()
     {
         Debug.Log(colorTween == null);
         colorTween?.Kill(); // Stop the animation
-        spriteRenderer.color = Color.white; // Reset color to default
+        spriteRenderer.color = new Color(1, 1, 1, 1); // Reset color to white with full opacity (alpha = 1)
     }
 
     private void Update()
@@ -136,7 +139,7 @@ public class PlaceableObject : MonoBehaviour
 
                 if (canPlace)
                 {
-                    AnimateColor(Color.green, Color.white);
+                    AnimateColor(Color.white, Color.white);
                 }
                 else
                 {
@@ -162,7 +165,7 @@ public class PlaceableObject : MonoBehaviour
 
                 // Start the animation as soon as the drag starts
                 lastCanBePlacedState = CanBePlaced();
-                AnimateColor(lastCanBePlacedState ? Color.green : Color.white, lastCanBePlacedState ? Color.white : Color.red);
+                AnimateColor(lastCanBePlacedState ? Color.white : Color.white, lastCanBePlacedState ? Color.white : Color.red);
             }
         }
     }
