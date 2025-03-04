@@ -112,7 +112,6 @@ public class BuildingSystem : MonoBehaviour
         GameObject obj = Instantiate(building, position, Quaternion.identity);
         PlaceableObject temp = obj.transform.GetComponent<PlaceableObject>();
         temp.gameObject.AddComponent<ObjectDrag>();
-        
         //return object instantiated
         return obj;
     }
