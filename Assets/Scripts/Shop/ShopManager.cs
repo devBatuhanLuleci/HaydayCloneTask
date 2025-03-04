@@ -21,7 +21,7 @@ public class ShopManager : MonoBehaviour
     //prefab for displaying shop info
     [SerializeField] private GameObject itemPrefab;
     //al shop items
-    private Dictionary<ObjectType, List<ShopItem>> shopItems = new Dictionary<ObjectType, List<ShopItem>>(5);
+    private Dictionary<ObjectType, List<ShopItem>> shopItems = new Dictionary<ObjectType, List<ShopItem>>(1);
 
     //tabs with items
     [SerializeField] public TabGroup shopTabs;
@@ -58,11 +58,8 @@ public class ShopManager : MonoBehaviour
         ShopItem[] items = Resources.LoadAll<ShopItem>("Shop");
         
         //initialize the dictionary
-        shopItems.Add(ObjectType.Animals, new List<ShopItem>());
-        shopItems.Add(ObjectType.AnimalHomes, new List<ShopItem>());
         shopItems.Add(ObjectType.ProductionBuildings, new List<ShopItem>());
-        shopItems.Add(ObjectType.TreesBushes, new List<ShopItem>());
-        shopItems.Add(ObjectType.Decorations, new List<ShopItem>());
+
 
         //add all shop items to the dictionary
         foreach (var item in items)

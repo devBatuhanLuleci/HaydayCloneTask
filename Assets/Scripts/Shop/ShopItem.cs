@@ -17,9 +17,5 @@ public class ShopItem : ScriptableObject
 //types of objects - also tabs
 public enum ObjectType
 {
-    AnimalHomes,
-    Animals,
     ProductionBuildings,
-    TreesBushes,
-    Decorations
 }

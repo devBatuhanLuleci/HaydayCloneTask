@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e28f4e48c8ad04fbc2d63b38c20d72, type: 3}
+  m_Name: Carrot
+  m_EditorClassIdentifier: 
+  Name: Carrot
+  Description: 
+  Icon: {fileID: 21300000, guid: e863c619ded53064b9313c4ad2cdd9ff, type: 3}
+  Level: 0
+  ItemTypes: []
+  ItemsAmounts: 
+  TimeStruct:
+    Days: 0
+    Hours: 0
+    Minutes: 2
+    Seconds: 0
+  growingCarrot: {fileID: 21300000, guid: ae29cbadc53ca644982c3471c8407e93, type: 3}
+  readyCarrot: {fileID: 21300000, guid: f62df02e4d43fcd44a9bf1a3f3cc46db, type: 3}
