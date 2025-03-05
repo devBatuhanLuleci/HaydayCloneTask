@@ -8,6 +8,13 @@ This project is a **Farm Simulation Test Case** developed using **Unity** and **
 
 [Download APK](https://github.com/devBatuhanLuleci/HaydayCloneTask/raw/d6e83a0d72d6fa250afd6abbc297e42bca93ffb8/FarmSimulationTaskApk.zip)
 
+
+## Screenshots
+
+![FarmSimulatorTask](https://github.com/user-attachments/assets/031af986-88b3-42e0-8601-745b38435eb4)
+
+
+
 ## Features
 
 - **Crop System**: Grid-based planting, growing, and harvesting system.
@@ -59,10 +66,6 @@ This project is a **Farm Simulation Test Case** developed using **Unity** and **
 - **PanZoom**: Touch-based camera controller.
 - **ShopManager**: Manages in-game shop interactions.
 - **Tooltip System**: Context-based information display.
-
-## Screenshots
-
-![FarmSimulatorTask](https://github.com/user-attachments/assets/031af986-88b3-42e0-8601-745b38435eb4)
 
 
 ---
