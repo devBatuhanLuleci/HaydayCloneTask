@@ -6,7 +6,7 @@ This project is a **Farm Simulation Test Case** developed using **Unity** and **
 
 ## APK Link
 
-*Add link here*
+[Download APK](https://github.com/devBatuhanLuleci/HaydayCloneTask/raw/d6e83a0d72d6fa250afd6abbc297e42bca93ffb8/FarmSimulationTaskApk.zip)
 
 ## Features
 
